@@ -24,3 +24,12 @@ export const createProfile = async ({ firstName, lastName }) => {
   });
   return res;
 };
+
+export const deleteProfile = async (id) => {
+  const res = await axios({
+    method: "delete",
+    url: `${URL}/profile/${id}`,
+  });
+
+  return res;
+};

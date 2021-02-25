@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { createProfile, getAllProfiles } from "../network";
+import { createProfile, deleteProfile, getAllProfiles } from "../network";
 import { Link } from "react-router-dom";
 import NewProfile from "./NewProfile";
 
@@ -18,6 +18,11 @@ const ProfileList = () => {
 
   const submitForm = async ({ firstName, lastName }) => {
     await createProfile({ firstName, lastName });
+    await fetchProfiles();
+  };
+
+  const remove = async (id) => {
+    await deleteProfile(id);
     await fetchProfiles();
   };
 
@@ -57,7 +62,10 @@ const ProfileList = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-danger btn-sm">
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => remove(profile.id)}
+                  >
                     <i className="far fa-trash-alt"></i> Delete
                   </button>
                 </td>
