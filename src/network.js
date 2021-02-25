@@ -33,3 +33,16 @@ export const deleteProfile = async (id) => {
 
   return res;
 };
+
+export const updateProfile = async (id, firstName, lastName) => {
+  const res = await axios({
+    method: "put",
+    url: `${URL}/profile/${id}`,
+    data: {
+      fname: firstName,
+      lname: lastName,
+    },
+  });
+
+  return res;
+};

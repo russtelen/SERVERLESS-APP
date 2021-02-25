@@ -57,9 +57,12 @@ const ProfileList = () => {
                 <td>{profile.fname}</td>
                 <td>{profile.lname}</td>
                 <td>
-                  <button className="btn btn-warning btn-sm">
+                  <a
+                    className="btn btn-warning btn-sm"
+                    href={`/profiles/${profile.id}/edit`}
+                  >
                     <i className="fas fa-cogs"></i> Edit
-                  </button>
+                  </a>
                 </td>
                 <td>
                   <button
