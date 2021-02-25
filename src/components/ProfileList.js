@@ -10,8 +10,10 @@ const ProfileList = () => {
     const res = await getAllProfiles();
     setProfiles(res);
   };
-  useEffect(async () => {
-    fetchProfiles();
+  useEffect(() => {
+    (async () => {
+      fetchProfiles();
+    })();
   }, []);
 
   const submitForm = async ({ firstName, lastName }) => {
@@ -22,7 +24,7 @@ const ProfileList = () => {
   return (
     <div className="container">
       <h1 className="text-center my-3">
-        Profiles <i class="fas fa-users"></i>
+        Profiles <i className="fas fa-users"></i>
       </h1>
       <NewProfile submit={submitForm} />
       <table className="table table-hover mt-3">
