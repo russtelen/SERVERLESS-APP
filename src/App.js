@@ -1,10 +1,17 @@
+import React from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/general/Header";
+import ProfileList from "./components/ProfileList";
 
 function App() {
   return (
-    <div className="App">
-      <h1>hello</h1>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact to="/profiles" component={ProfileList} />
+      </Switch>
+    </Router>
   );
 }
 
