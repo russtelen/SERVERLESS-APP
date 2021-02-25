@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { getAllProfiles } from "../network";
+import { createProfile, getAllProfiles } from "../network";
+import NewProfile from "./NewProfile";
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
 
-  useEffect(async () => {
+  const fetchProfiles = async () => {
     const res = await getAllProfiles();
     setProfiles(res);
+  };
+  useEffect(async () => {
+    fetchProfiles();
   }, []);
+
+  const submitForm = async ({ firstName, lastName }) => {
+    await createProfile({ firstName, lastName });
+    await fetchProfiles();
+  };
 
   return (
     <div className="container">
       <h1 className="text-center my-3">Profiles</h1>
-      <table className="table table-hover">
+      <NewProfile submit={submitForm} />
+      <table className="table table-hover mt-3">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -24,7 +33,7 @@ const ProfileList = () => {
         <tbody>
           {profiles.map((profile) => {
             return (
-              <tr>
+              <tr key={profile.id}>
                 <th scope="row">{profile.id}</th>
                 <td>{profile.fname}</td>
                 <td>{profile.lname}</td>
