@@ -7,6 +7,12 @@ export const getAllProfiles = async () => {
   return data;
 };
 
+export const getProfile = async (id) => {
+  const res = await axios.get(`${URL}/profile/${id}`);
+  const data = await res.data;
+  return data;
+};
+
 export const createProfile = async ({ firstName, lastName }) => {
   const res = await axios({
     method: "post",
