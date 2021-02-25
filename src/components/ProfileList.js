@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { getAllProfiles } from "../network";
 
 const ProfileList = () => {
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(async () => {
+    const res = await getAllProfiles();
+    setProfiles(res);
+  }, []);
+
   return (
     <div className="container">
       <h1 className="text-center my-3">Profiles</h1>
@@ -13,21 +22,15 @@ const ProfileList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Thornton</td>
-          </tr>
+          {profiles.map((profile) => {
+            return (
+              <tr>
+                <th scope="row">{profile.id}</th>
+                <td>{profile.fname}</td>
+                <td>{profile.lname}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
