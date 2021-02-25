@@ -45,7 +45,7 @@ const NewProfile = ({ submit }) => {
           type="submit"
           className="btn btn-success mb-2"
         >
-          Add Profile
+          Add Profile <i className="fas fa-plus-circle"></i>
         </button>
       </form>
     </div>

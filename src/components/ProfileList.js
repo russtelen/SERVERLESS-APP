@@ -33,6 +33,8 @@ const ProfileList = () => {
             <th scope="col">id</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +51,16 @@ const ProfileList = () => {
                 </th>
                 <td>{profile.fname}</td>
                 <td>{profile.lname}</td>
+                <td>
+                  <button className="btn btn-warning btn-sm">
+                    <i className="fas fa-cogs"></i> Edit
+                  </button>
+                </td>
+                <td>
+                  <button className="btn btn-danger btn-sm">
+                    <i className="far fa-trash-alt"></i> Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
