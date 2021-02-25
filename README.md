@@ -5,7 +5,7 @@
     Full stack serverless app built with AWS services and React.
 
     AWS Services used are:
-    - RDS
+    - RDS (MySQL)
     - Lambda
     - API gateway
 
